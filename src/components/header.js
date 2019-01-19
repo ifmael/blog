@@ -23,22 +23,16 @@ const Header = ({ siteTitle }) => (
               <div className="navbar-start">
               </div>
               <div className="navbar-end">
-                <div class="navbar-item vertically">
-                  <div>
+                <div class="navbar-item is-vertical-right">
                     <a>
                       Search
                     </a>
-                  </div>
-                  <div>
                     <a>
                       me
                     </a>
-                  </div>
-                  <div>
                     <a>
                       github
                     </a>
-                  </div>
                 </div>
               </div>
             </div>

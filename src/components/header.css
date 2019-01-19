@@ -1,10 +1,4 @@
-.is-vertical-center {
-  display: flex;
-  align-items: center;
-}
-
-
-.vertically{
+.is-vertical-right {
   flex-direction: column;
   align-items: flex-end !important;
 }

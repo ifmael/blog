@@ -7,6 +7,7 @@ import SEO from '../components/seo'
 import 'bulma/css/bulma.css'
 import './index.css';
 //import './debug.css'
+//import GlobalLayout from '../layouts/global-layout'
 
 const IndexPage = () => (
   <Layout>

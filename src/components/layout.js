@@ -3,10 +3,44 @@ import PropTypes from 'prop-types'
 import { StaticQuery, graphql } from 'gatsby'
 
 import Header from './header'
+import Footer from './footer';
 import ArticulesList from './articules-list';
 import './layout.css'
 
-const Layout = ({ children }) => (
+export default class Layout extends React.Component {
+  
+  static propTypes = {
+    children: PropTypes.node.isRequired,
+  }
+  
+  render() {
+    const { children } = this.props;
+    return (
+      <StaticQuery
+        query={graphql`
+          query SiteTitleQuery {
+            site {
+              siteMetadata {
+                title
+              }
+            }
+          }
+        `}
+        render={data => {
+          return (
+            <>
+              <Header siteTitle={data.site.siteMetadata.title} />
+                {children}
+              <Footer></Footer>
+            </>
+          )
+        }}
+      />
+    )
+  }
+}
+
+/* const Layout = ({ children }) => (
   <StaticQuery
     query={graphql`
       query SiteTitleQuery {
@@ -37,4 +71,5 @@ Layout.propTypes = {
   children: PropTypes.node.isRequired,
 }
 
-export default Layout
+export default Layout */
+

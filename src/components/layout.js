@@ -29,9 +29,9 @@ export default class Layout extends React.Component {
         render={data => {
           return (
             <>
-              <Header siteTitle={data.site.siteMetadata.title} />
+              <Header siteTitle={data.site.siteMetadata.title} /> 
                 {children}
-              <Footer></Footer>
+              <Footer />
             </>
           )
         }}

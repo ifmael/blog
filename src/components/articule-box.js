@@ -16,7 +16,7 @@ export default ({title, excerpt, date, slug}) => (
             <div className="level-left">
               <div className="level-item">
                 <h2>
-                  <Link to={slug}>
+                  <Link to={`/articules/${slug}`}>
                     {title}
                   </Link>
                 </h2>

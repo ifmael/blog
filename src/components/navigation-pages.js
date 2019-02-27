@@ -6,7 +6,7 @@ import './navigation-pages.css'
 function buildButton(link, text){
   return (
     <Link to={link}>
-      <button>{text}</button>
+      <button className="button is-link">{text}</button>
     </Link>
   );
 }

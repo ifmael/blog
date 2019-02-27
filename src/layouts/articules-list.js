@@ -1,18 +1,13 @@
 import React from 'react'
 import ArticuleBox from '../components/articule-box';
-import { graphql, Link } from 'gatsby'
+import NavigationPages from '../components/navigation-pages'
+import { graphql } from 'gatsby'
 
 import Layout from './layout'
 
 export default ({data, pageContext}) => {
 
   const posts = data.allMarkdownRemark.edges
-  let previousButtom, nextButtom;
-  if (pageContext.previousPage)
-    previousButtom = <Link to={pageContext.previousPage}><button>{pageContext.previousPage}</button></Link>
-  if (pageContext.nextPage)
-    nextButtom = <Link to={pageContext.nextPage}><button>{pageContext.nextPage}</button></Link>
-
   return(
     <Layout>
       {posts.map( ({node})=> {
@@ -26,11 +21,16 @@ export default ({data, pageContext}) => {
             ></ArticuleBox>
         )
       })}
-      {previousButtom}
-      {nextButtom}
+      <NavigationPages
+        previousPage = {pageContext.previousPage}
+        nextPage = {pageContext.nextPage}
+      />
+
     </Layout>
   )
 }
+
+// <NavigationPosts previousPage=""  nextPage="">
 
 export const query = graphql`
   query blogListQuery($skip: Int!, $limit: Int!)

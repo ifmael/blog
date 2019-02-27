@@ -70,6 +70,18 @@ exports.createPages = ({ graphql, actions }) => {
           })
         })
 
+        //Create page for path /
+        createPage({
+          path: '/',
+          component: path.resolve(`./src/layouts/articules-list.js`),
+          context: {
+            limit: postsPerPage,
+            skip: 0,
+            pageNumer: 1,
+            nextPage: numPages > 1 ? `/blog/2` : undefined
+          },
+        })
+
         // Create articules pages
         posts.forEach(({ node }) => {
           createPage({

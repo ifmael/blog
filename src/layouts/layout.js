@@ -5,6 +5,10 @@ import Header from '../components/header'
 import Footer from '../components/footer';
 // import './layout.css'
 
+
+import 'bulma/css/bulma.css'
+import './index.css';
+
 export default ({ children }) => (
   <StaticQuery
     query={graphql`

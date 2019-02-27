@@ -1,10 +1,9 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { StaticQuery, graphql } from 'gatsby'
 
-import Header from './header'
-import Footer from './footer';
-import './layout.css'
+import Header from '../components/header'
+import Footer from '../components/footer';
+// import './layout.css'
 
 export default ({ children }) => (
   <StaticQuery
@@ -20,8 +19,12 @@ export default ({ children }) => (
     render={data => {
       return (
         <>
-          <Header siteTitle={data.site.siteMetadata.title} /> 
-            {children}
+          <Header siteTitle={data.site.siteMetadata.title} />
+            <div  className="columns ">
+              <div className="column is-8 is-offset-2">
+                {children}
+              </div>
+            </div>
           <Footer />
         </>
       )

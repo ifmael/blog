@@ -1,7 +1,8 @@
 import React from 'react'
+import { Link } from 'gatsby'
 import './articule-box.css';
 
-export default () => (
+export default ({title, excerpt, date, slug}) => (
   <div className="box">
     <article className="media">
       <div className="media-left">
@@ -15,18 +16,20 @@ export default () => (
             <div className="level-left">
               <div className="level-item">
                 <h2>
-                  This is a header example
+                  <Link to={slug}>
+                    {title}
+                  </Link>
                 </h2>
               </div>
             </div>
             <div className="level-right">
               <div className="level-item">
-                <span>27/07/1986</span>
+                <span>{date}</span>
               </div>
             </div>
           </div>
           <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+            {excerpt}
           </p>
         </div>
       </div>

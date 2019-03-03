@@ -31,6 +31,10 @@ export default class Search extends React.Component{
         if (this.state.query.length % 2 === 0){
           this.filterResult(this.search.value)
         }
+      } else if(this.state && this.state.query.length === 0){
+        this.setState({
+          resultFiltered:[] 
+        })
       }
     })
   }

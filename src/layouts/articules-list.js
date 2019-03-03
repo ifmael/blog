@@ -30,8 +30,6 @@ export default ({data, pageContext}) => {
   )
 }
 
-// <NavigationPosts previousPage=""  nextPage="">
-
 export const query = graphql`
   query blogListQuery($skip: Int!, $limit: Int!)
   {

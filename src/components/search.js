@@ -3,15 +3,6 @@ import Suggestions from './suggestions.js'
 
 export default class Search extends React.Component{
 
-  constructor(props){
-    super(props)
-    this.state = {
-      query: '',
-      markdownFiles: props,
-      resultFiltered: []
-    }
-  }
-
   filterResult(searchValue){
     const resultFiltered = [];
     this.state.markdownFiles.listFiles.forEach( item => {

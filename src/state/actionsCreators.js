@@ -5,7 +5,6 @@ export const changeSearch = search => {
 };
 
 export const addMarkdownFiles = markdownFiles => {
-  debugger;
   return { type: actions.ADD_MARKDOWNFILES, markdownFiles }
 }
 

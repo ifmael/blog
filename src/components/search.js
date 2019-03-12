@@ -1,45 +1,66 @@
 import React from "react"
 import Suggestions from './suggestions.js'
+import { changeSearch, addResulFiltered, emptyResultFilter } from '../state/actionsCreators'
+import { connect } from 'react-redux'
 
-export default class Search extends React.Component{
+const SearchTemplate = ({markdownFiles, resultFiltered, boundChangeSearch, boundResulFiltered, boundEmptyResultFilter}) => {
 
-  filterResult(searchValue){
-    const resultFiltered = [];
-    this.state.markdownFiles.listFiles.forEach( item => {
+  const filterResult = (searchValue) =>{
+    const newResultFiltered = [];
+    markdownFiles.forEach( item => {
       if( item.node.frontmatter.title.indexOf(searchValue) !== -1)
-        resultFiltered.push(item);
+      newResultFiltered.push(item);
     })
-    this.setState({
-      resultFiltered: resultFiltered
-    })
+    boundResulFiltered(newResultFiltered);
   }
 
-  handleInputChange = (event) =>{
-    this.setState({
-      query: this.search.value
-    }, () => {
-      if (this.state && this.state.query.length > 1) {
-        if (this.state.query.length % 2 === 0){
-          this.filterResult(this.search.value)
-        }
-      } else if(this.state && this.state.query.length === 0){
-        this.setState({
-          resultFiltered:[] 
-        })
+  const handleInputChange = (event) =>{
+    event.preventDefault();
+    boundChangeSearch(event.target.value);
+    if (event.target.value.length > 1) {
+      if (event.target.value.length % 2 === 0) {
+        filterResult(event.target.value)
       }
-    })
+    } else if( event.target.value.length === 0 ){
+      boundEmptyResultFilter();
+    }
   }
 
-  render(){
-    return (
-      <form>
-        <input type="text" name="search" placeholder="Search..." 
-          ref={input => this.search = input}
-          onChange={this.handleInputChange.bind(this)}
-        />
-        <Suggestions listFiles={this.state.resultFiltered} />
-      </form>
-    )
+  return (
+    <form>
+      <input type="text" name="search" placeholder="Search..." 
+        onChange={event => handleInputChange(event)}
+      />
+      <Suggestions listFiles={resultFiltered} />
+    </form>
+  );
+}
+
+const mapStateToProps = ({app}) => {
+  const { markdownFiles, resultFiltered } = app;
+  return { markdownFiles, resultFiltered};
+}
+
+const mapDispatchToProps = dispatch => {
+  return { 
+    boundChangeSearch: (query) => {
+      dispatch( changeSearch(query) ) 
+    },
+    boundResulFiltered:  (resultFiltered) => {
+      dispatch( addResulFiltered(resultFiltered) )
+    },
+    boundEmptyResultFilter: () => {
+      dispatch( emptyResultFilter())
+    }
   }
+}
+
+const ConnectedSearch = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SearchTemplate);
+
+export default (props) => {
+  return ( <ConnectedSearch {...props} />)
 }
 

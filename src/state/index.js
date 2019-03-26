@@ -1,4 +1,6 @@
 import { combineReducers } from 'redux';
-import state from './app';
+// import state from './app';
+import searchState from '../components/ifm-search/state/reducers.js'
 
-export default combineReducers({ state });
+
+export default combineReducers({ state: searchState });

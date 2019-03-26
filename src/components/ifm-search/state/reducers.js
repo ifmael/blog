@@ -1,13 +1,8 @@
 import * as actions from './actions'
-
-// Initial state
-const initialState = {
-  query: '',
-  resultFiltered: []
-};
+import { searchState } from './searchState.js'
 
 // Reducer
-export default (state = initialState, action) => {
+export default (state = searchState, action) => {
   switch (action.type) {
     case actions.CHANGE_SEARCH:
       return { ...state, query: action.search }

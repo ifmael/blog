@@ -1,6 +1,7 @@
 import React from "react"
-import Suggestions from './suggestions.js'
-import { changeSearch, addResulFiltered, emptyResultFilter } from '../state/actionsCreators'
+import Suggestions from '../suggestions.js'
+// import { changeSearch, addResulFiltered, emptyResultFilter } from '../../state/actionsCreators'
+import { changeSearch, addResulFiltered, emptyResultFilter } from './state/actionsCreator'
 import { connect } from 'react-redux'
 
 const SearchTemplate = ({listFiles, resultFiltered, boundChangeSearch, boundResulFiltered, boundEmptyResultFilter}) => {

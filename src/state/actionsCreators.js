@@ -4,10 +4,6 @@ export const changeSearch = search => {
   return { type: actions.CHANGE_SEARCH, search }
 };
 
-export const addMarkdownFiles = markdownFiles => {
-  return { type: actions.ADD_MARKDOWNFILES, markdownFiles }
-}
-
 export const addResulFiltered = resultFiltered => {
   return { type: actions.ADD_RESULT_FILTERED, resultFiltered }
 }

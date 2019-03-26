@@ -3,13 +3,13 @@ import Suggestions from './suggestions.js'
 import { changeSearch, addResulFiltered, emptyResultFilter } from '../state/actionsCreators'
 import { connect } from 'react-redux'
 
-const SearchTemplate = ({markdownFiles, resultFiltered, boundChangeSearch, boundResulFiltered, boundEmptyResultFilter}) => {
-
+const SearchTemplate = ({listFiles, resultFiltered, boundChangeSearch, boundResulFiltered, boundEmptyResultFilter}) => {
   const filterResult = (searchValue) =>{
     const newResultFiltered = [];
-    markdownFiles.forEach( item => {
-      if( item.node.frontmatter.title.indexOf(searchValue) !== -1)
-      newResultFiltered.push(item);
+    listFiles.forEach( item => {
+      const titleLowerCase = item.node.frontmatter.title.toLocaleLowerCase();
+      if( titleLowerCase.indexOf(searchValue.toLowerCase()) !== -1)
+        newResultFiltered.push(item);
     })
     boundResulFiltered(newResultFiltered);
   }
@@ -36,9 +36,9 @@ const SearchTemplate = ({markdownFiles, resultFiltered, boundChangeSearch, bound
   );
 }
 
-const mapStateToProps = ({app}) => {
-  const { markdownFiles, resultFiltered } = app;
-  return { markdownFiles, resultFiltered};
+const mapStateToProps = ({state}) => {
+  const { resultFiltered } = state;
+  return { resultFiltered };
 }
 
 const mapDispatchToProps = dispatch => {
@@ -46,7 +46,7 @@ const mapDispatchToProps = dispatch => {
     boundChangeSearch: (query) => {
       dispatch( changeSearch(query) ) 
     },
-    boundResulFiltered:  (resultFiltered) => {
+    boundResulFiltered: (resultFiltered) => {
       dispatch( addResulFiltered(resultFiltered) )
     },
     boundEmptyResultFilter: () => {

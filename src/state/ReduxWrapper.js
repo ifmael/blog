@@ -5,7 +5,7 @@ import rootReducer from '.';
 
 const createStore = () => reduxCreateStore(rootReducer);
 const myStore = createStore();
-window.myStore = myStore;
+
 myStore.subscribe( event => {
   console.log(`updated state`);
 }) 

@@ -3,7 +3,6 @@ import * as actions from './actions'
 // Initial state
 const initialState = {
   query: '',
-  markdownFiles: [],
   resultFiltered: []
 };
 
@@ -12,8 +11,6 @@ export default (state = initialState, action) => {
   switch (action.type) {
     case actions.CHANGE_SEARCH:
       return { ...state, query: action.search }
-    case actions.ADD_MARKDOWNFILES:
-      return { ...state, markdownFiles: [...action.markdownFiles] }
     case actions.ADD_RESULT_FILTERED:
       return { ...state, resultFiltered: [...action.resultFiltered] }
     case actions.EMPTY_RESULT_FILTER:

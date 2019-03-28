@@ -1,6 +1,6 @@
 import React from 'react'
-import './header.css'
-import Search from './ifm-search/search.js'
+import './styles/header.css'
+import Search from '../ifm-search/search.js'
 import { graphql, StaticQuery } from 'gatsby'
 
 export default () =>{

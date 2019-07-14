@@ -3,8 +3,9 @@ import Suggestions from '../suggestions.js'
 // import { changeSearch, addResulFiltered, emptyResultFilter } from '../../state/actionsCreators'
 import { changeSearch, addResulFiltered, emptyResultFilter } from './state/actionsCreator'
 import { connect } from 'react-redux'
+import PropTypes from 'prop-types';
 
-const SearchTemplate = ({listFiles, resultFiltered, boundChangeSearch, boundResulFiltered, boundEmptyResultFilter}) => {
+const SearchComponent = ({listFiles, resultFiltered, boundChangeSearch, boundResulFiltered, boundEmptyResultFilter}) => {
   const filterResult = (searchValue) =>{
     const newResultFiltered = [];
     listFiles.forEach( item => {
@@ -59,7 +60,11 @@ const mapDispatchToProps = dispatch => {
 const ConnectedSearch = connect(
   mapStateToProps,
   mapDispatchToProps
-)(SearchTemplate);
+)(SearchComponent);
+
+SearchComponent.protoTypes = {
+  listFiles: PropTypes.string
+}
 
 export default (props) => {
   return ( <ConnectedSearch {...props} />)

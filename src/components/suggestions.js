@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'gatsby'
+import PropTypes from 'prop-types';
 
 const Suggestions = ({listFiles}) => {
   if (Array.isArray(listFiles) & listFiles.length > 0){
@@ -15,5 +16,10 @@ const Suggestions = ({listFiles}) => {
   else
     return (<></>)
 }
+
+Suggestions.protoTypes = {
+  listFiles: PropTypes.asd
+}
+
 
 export default Suggestions

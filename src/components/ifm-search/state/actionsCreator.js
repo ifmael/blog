@@ -8,6 +8,6 @@ export const addResulFiltered = resultFiltered => {
   return { type: actions.ADD_RESULT_FILTERED, resultFiltered }
 }
 
-export const emptyResultFilter = () =>{
+export const emptyResultFilter = () => {
   return { type: actions.EMPTY_RESULT_FILTER, resultFiltered: emptyResultFilter }
 }

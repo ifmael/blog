@@ -3,13 +3,14 @@ import { StaticQuery, graphql } from 'gatsby'
 
 import Header from '../components/ifm-header/header'
 import Footer from '../components/footer';
+import PropTypes from 'prop-types';
 // import './layout.css'
 
 
 import 'bulma/css/bulma.css'
 import './index.css';
 
-export default ({ children }) => (
+const Layout = ({ children }) => (
   <StaticQuery
     query={graphql`
       query SiteTitleQuery {
@@ -35,3 +36,8 @@ export default ({ children }) => (
     }}
   />
 )
+Layout.propropTypes = {
+  children: PropTypes.boolean
+}
+
+export default Layout;

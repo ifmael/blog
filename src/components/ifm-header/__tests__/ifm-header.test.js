@@ -1,7 +1,12 @@
 import React from "react"
-import renderer from "react-test-renderer"
 import Header from "../header"
 import { StaticQuery } from "gatsby"
+import { shallow } from 'enzyme';
+import ShallowRenderer from 'react-test-renderer/shallow'
+import ReactTestUtils from 'react-dom/test-utils'; 
+import TestRenderer from 'react-test-renderer';
+import toJson from 'enzyme-to-json';
+
 
 beforeEach(() => {
   StaticQuery.mockImplementationOnce(({ render }) =>
@@ -26,7 +31,19 @@ beforeEach(() => {
 
 describe("Header", () =>
   void it("renders correctly", () => {
-    const tree = renderer.create(<Header />).toJSON()
-    expect(tree).toMatchSnapshot()
+    /* const tree = TestRenderer.create(<Header />).toJSON()
+    expect(tree).toMatchSnapshot() */
+
+    const tree = shallow(<Header />)
+    expect(toJson(tree)).toMatchSnapshot()
+    
+    /* const renderer = new ShallowRenderer()
+    const tree = renderer.render(<Header />)
+    expect(tree).toMatchSnapshot(); */
+
+    /*const renderer = ReactTestUtils.createRenderer();
+    expect(renderer.render(<Header />)).toMatchSnapshot();*/
+
+    
   })
 )
